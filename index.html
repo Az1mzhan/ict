@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name ="viewport" content="width=device-width, initial-scale=1">
+    <title>The Web</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥸</text></svg>">
+    <link href="style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div class="container-fluid" id="app">
+        <div class="row" id="nav">
+            <div class="col-12 row">
+                <a href="#" @click="toggle"><h2>The World Wide Web</h2></a>
+            </div>
+        </div>
+        <div class="row" id="main-content">
+            <div class="col-2" id="vert-nav">
+                <nav class="navbar">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" @click="toggle1">History</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" @click="toggle2"> Definition and features </a>
+                        </li>
+                        <div class="dropdown">
+                            <a class="btn dropdown-toggle" href="#" role="button" id="web-dropdown" data-bs-toggle="dropdown" aria-expanded="false"> Web Technologies </a>
+                            <ul class="dropdown-menu  dropdown-menu-dark" aria-labelledby="web-dropdown">
+                                <li><a class="dropdown-item" href="#" @click="toggle3">HTML</a></li>
+                                <li><a class="dropdown-item" href="#" @click="toggle4">CSS</a></li>
+                                <li><a class="dropdown-item" href="#" @click="toggle5">JS</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <a class="btn dropdown-toggle" href="#" role="button" id="web-dropdown" data-bs-toggle="dropdown" aria-expanded="false"> Protocols </a>
+                            <ul class="dropdown-menu  dropdown-menu-dark" aria-labelledby="web-dropdown">
+                                <li><a class="dropdown-item" href="#" @click="toggle6">URL</a></li>
+                                <li><a class="dropdown-item" href="#" @click="toggle7">DNS</a></li>
+                                <li><a class="dropdown-item" href="#" @click="toggle8">HTTP</a></li>
+                                <li><a class="dropdown-item" href="#" @click="toggle9">TLS</a></li>
+                            </ul>
+                        </div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" @click="toggle10"> Modern usage </a>
+                        </li>
+                        <hr>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" @click="toggle11"> Credits </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" @click="toggle12"> References </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-10" id="main-par">
+                <div v-if="id == 0">
+                    <p class="main-text" id="speech">Welcome, dear guest! This website was created to inform about the technology that covers all spheres of our life and sufficiently facilitates them - the World Wide Web, or briefly the Web. There are 5 main subpages where you can observe detailed info about the Web and its elements. This site was prepared by the group <em>ABAA</em>. Members of this group you may look at the credits page. </p>
+                    <hr>
+                    <p class="main-text">How much do you know about the Web?</p>
+                    <div class="row justify-content-around" id="card-row">
+                        <div class="card col-3">
+                            <img src="img/Emoji-1.jpg" class="card-img-top">
+                            <div class="card-body">
+                                <p class="card-text rank" >Novice</p>
+                                <p class="card-text descr">You don't know anything about general Web concepts and can't use them on practice.</p>
+                                <div class="row justify-content-around">
+                                    <button class="btn btn-outline-success text-center col-4" @click="msg1">Yes</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card col-3">
+                            <img src="img/Emoji-2.jpg" class="card-img-top">
+                            <div class="card-body">
+                                <p class="card-text rank" >Moderate user</p>
+                                <p class="card-text descr">You know general Web concepts, yet you cannot exploit this knowledge during Web development</p>
+                                <div class="row justify-content-around">
+                                    <button class="btn btn-outline-success text-center col-4" @click="msg2">Yes</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card col-3">
+                            <img src="img/Emoji-3.jpg" class="card-img-top">
+                            <div class="card-body">
+                                <p class="card-text rank" >Professional</p>
+                                <p class="card-text descr">You know all concepts of the Web and utilize them on practice in Web development.</p>
+                                <div class="row justify-content-around">
+                                    <button class="btn btn-outline-success text-center col-4" @click="msg3">Yes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="id == 1">
+                    <h4 class="par-header"><strong>Happy birthday, Web!</strong></h4>
+                    <p class="speech2">In this year the World Wide Web celebrated its own 33th birthday. Thanks to it, people can find any interesting information about our world, share their own ideas with others and assist people in need. Tim Berners-Lee can be justifiably considered as the founding father of the Web since, in 1989, being the worker of CERN, he proposed the idea of interconnected web pages in his work “Information Management: A Proposal”. When we observe the history of Web, it is generally reckoned that the Web had 3 stages of its evolution. Now we are gonna discuss these stages.</p>
+                    <h4 class="par-header"><strong>Web 1.0</strong></h4>
+                    <p class="speech2">It represents the basic of web it was used even in 2003, invented by Tim Berners-Lee and it is just the readable site with raw data of the World Wide Web. The user can only Search and read the information through browser, he cannot share and commend on the site. In other words, it is static (fixed) information. In Web 1.0, a few of person that must have knowledge of how the webpages are designed (interlinked) can create and modified the webpages compare with large number of users there not necessary to have knowledge about how the webpages are designed. In the Web 1.0 technique, some companies design applications that allow users download information from the web, but users did not see the procedure of how the applications works. Protocols used in Web 1.0 are HTML, HTTP and URL. In addition, technologies used in Web 1.0 like XML, XHTML and CSS. There are combined technologies between server and client such as ASP, PHP, JSP, CGI, and PERL. The server side used JavaScript, VBscript and Flash on a client. Web 1.0 is very slow, and a user used to refresh the site every time when new information added to the web pages. The Web’s 1.0 problem is that it just works in one direction, yet the user cannot post or modify the webpage. </p>
+                    <br>
+                    <div class="row justify-content-around">
+                        <img class="col-3" src="img/xml.webp">
+                        <img class="col-3" src="img/php.svg">
+                        <img class="col-3" src="img/perl.png">
+                    </div>
+                    <div class="row justify-content-around">
+                        <p class="col-3 text-center"><i class="fig-capture">XML, Extensible Markup Language</i></p>
+                        <p class="col-3 text-center"><i class="fig-capture">PHP, web script language</i></p>
+                        <p class="col-3 text-center"><i class="fig-capture">Perl, high-level interpreted language</i></p>
+                    </div>
+                    <h4 class="par-header"><strong>Web 2.0</strong></h4>
+                    <p class="speech2">It is the second version of the Web. In 2004 it was presented formally by Dale Dougherty who was vice-president of O’Reilly Media. It is also called the read and write Web (writable), since it was representing a new method to use current technologies of the Internet, and the Web could become bidirectional. Actually, the Web 1.0 presents to a user accessing possibility to upload and download from the webpage like a provider (a site admin), but in limited controlling. In other words, actual interaction of user allows simply upload as well as download. The users of Web 2.0 had more interaction with less control. Technology infrastructure of Web 2.0 consist of some rules such as RSS, Atom, RDF which were used by the designer for creation of the Web 2.0 services, also the Web 2.0 uses Ajax technology in the Internet such as JavaScript and XML, DOM, REST, XML and CSS. The Web 2.0 allows the users the ability to creation social activities and communicates with each other. But these properties also consider issues because the user can be hacked in privacy and personal information security.</p>
+                    <br>
+                    <div class="row justify-content-around">
+                        <img class="col-3" src="img/rdf.png">
+                        <img class="col-3" src="img/rss.png">
+                        <img class="col-3" src="img/rest.png">
+                    </div>
+                    <div class="row justify-content-around">
+                        <p class="col-3 text-center"><i class="fig-capture">RDF, Resouce Description Framework, W3C standard originally designed as a data model for metadata.</i></p>
+                        <p class="col-3 text-center"><i class="fig-capture">RSS, Really Simple Syndication, web feed that allows users and applications to access updates to websites</i></p>
+                        <p class="col-3 text-center"><i class="fig-capture">REST, Representational State Transfer, transfer protocol</i></p>
+                    </div>
+                    <h4 class="par-header"><strong>Web 3.0</strong></h4>
+                    <p class="speech2">It is also the third and current version of the Web launched in 2014 known as the executable Web that allows a user to interact with dynamic applications. In other words, sometimes it is called the Semantic Web and personalization. The Web 3.0 will be a complete reinvention of the Web. According to Conrad Wolfram’s theory about the Web 3.0, it will try to make the computer be able thinking and more intelligent for search about new data instead of humans. The Web 3.0 is the new method that used in various fields of IT. In other words, at this stage the Web is converted into huge database. </p>
+                    <div class="row justify-content-around">
+                        <img class="col-3" src="img/bitcoin.webp">
+                        <img class="col-3" src="img/brave.svg">
+                        <img class="col-3" src="img/steemit.png">
+                    </div>
+                    <div class="row justify-content-around">
+                        <p class="col-3 text-center"><i class="fig-capture">Bitcoin, decentralized cryptocurrency</i></p>
+                        <p class="col-3 text-center"><i class="fig-capture">Brave, open-source browser of new generation</i></p>
+                        <p class="col-3 text-center"><i class="fig-capture">Steemit, blockchain-based blogging and social media website</i></p>
+                    </div>
+                </div>
+                <div v-if="id == 2">
+                    <h4 class="par-header"><strong>What's the Web?</strong></h4>
+                    <p class="speech2">So what is the Web? According to Mozilla Developer Network Web docs glossary, the World Wide Web, or WWW, or W3, or the Web is an interconnected system of public web pages accessible through the Internet. Nowadays an enormous number of people wrongly estimate that terms “Internet” and “the World Wide Web” are equivalent. Nonetheless, it is considered as an inappropriate statement since the Internet is the global system of interconnected computer networks. In other words, the Web is accessible through the Internet and it is one of many applications built on the top of the Internet. To organize interaction between Internet users between each other or the Web system standardized technologies and protocols were created. First of all, we will discover web technologies.</p>
+                    <br>
+                    <div class="row justify-content-around">
+                        <img class="col-3" src="img/www.png">
+                        <img class="col-3" src="img/net.png">
+                        <img class="col-3" src="img/mdn.png">
+                    </div>
+                    <div class="row justify-content-around">
+                        <p class="col-3"><i class="fig-capture">The World Wide Web</i></p>
+                        <p class="col-3"><i class="fig-capture">The Internet</i></p>
+                        <p class="col-3"><i class="fig-capture">MDN, education web development platform</i></p>
+                    </div>
+                    <h4 class="par-header"><strong>Web's features</strong></h4>
+                    <p class="speech2">To begin with, web technology refers to a tool or technique that is used among devices on the Internet. Currently there are a lot of web technologies which are divided into front-end (client-side) and back-end (server-side) technologies. Despite the fact that both front-end and back-end technologies play a significant role in web development, our research group decided to observe in our report only technologies implemented on the client side since only this type of technologies is regulated and standardized by the World Wide Web Consortium (W3C), whereas the choice of back-end technologies is up to web developers. At this time there are a lot of front-end technologies, yet the most eminent ones are HyperText Markup Language (HTML), Cascading Style Sheets (CSS), JavaScript (JS) and etc.</p>
+                    <br>
+                    <div class="row justify-content-around">
+                        <img class="col-3" src="img/fullstack.jpg">
+                        <img class="col-3" src="img/w3c.png">
+                        <img class="col-3" src="img/html_logo.png">
+                    </div>
+                    <div class="row justify-content-around">
+                        <p class="col-3"><i class="fig-capture">Front-end and back-end, two sides of web development</i></p>
+                        <p class="col-3"><i class="fig-capture">W3C, World Wide Web Consortium</i></p>
+                        <p class="col-3"><i class="fig-capture">HTML, Hyper Text Markup Language</i></p>
+                    </div>
+                    <br>
+                </div>
+                <div v-if="id == 3">
+                    <h4 class="par-header"><strong>HTML</strong></h4>
+                    <p class="speech2">Firstly, HTML as the dominant web markup language (about 93.5% of websites use HTML) is ubiquitous in web development. Being a standard web technology, it informs web browsers about the structure and presentation of a web page. As we look at the structure of HTML documents, we might notice that the syntax consists of common text and tags. Reading these tags, web browsers get information about the structure of web pages and relations between elements of Document Object Model (DOM), the tree of web components. HTML tags are divided into visible and non-visible tags, or closed and enclosed tags. Whereas visible tags directly format the structure of a web page by adding visible changes, non-visible tags indirectly affect the web page’s appearance. The brightest example of a non-visible tag is the &ltheader> tag. This tag plays a crucial role in the structure of a web page because JS files, libraries, CSS stylesheets are included in this tag. Nonetheless, if you just add this tag to the HTML document, changes will not occur.</p>
+                    <br>
+                    <figure>
+                        <img src="img/html.png">
+                        <figcaption><i>Fig. 1. HTML code of this page.</i></figcaption>
+                    </figure>
+                    <p class="speech2">To write some HTML code you have to use some text redactors or IDE. For example, we prefer WebStorm. Nonetheless, html code of a website can be edited in browsers using their internal DevTools. In the case of Google Chrome, you might press F12 to open this console</p>
+                    <div class="row justify-content-around">
+                        <img class="col-4" src="img/ws.jpg">
+                        <img class="col-4" src="img/dev.png">
+                    </div>
+                    <div class="row justify-content-around">
+                        <p class="col-4"><i class="fig-capture">WebStorm, IDE for web development</i></p>
+                        <p class="col-4"><i class="fig-capture">DevTools of Google</i></p>
+                    </div>
+                    <br>
+                </div>
+                <div v-if="id == 4">
+                    <h4 class="par-header"><strong>CSS</strong></h4>
+                    <p class="speech2">Initially, HTML was also responsible for formatting the style of a web page. It can still be noticed by users while observing legacy HTML documents. For instance, the tag &lth1> is rather a stylistic tag than a semantic one because it directly changes text’s appearance, making its font size bigger. Moreover, tags’ attributes like align (align the element relatively to a page) used to visually present web pages too.  However, in the course of time web developers decided to create another technology for formatting a page’s style, Cascading Style Sheets, for following reasons:</p>
+                    <p>CSS can do:</p>
+                    <ol>
+                        <li>
+                            <p> 2D animations </p>
+                            <div class="square"></div>
+                        </li>
+                        <br>
+                        <li>
+                            <p> 3D animations </p>
+                            <div class="cube">
+                                <div class="back side"></div>
+                                <div class="left side"></div>
+                                <div class="right side"></div>
+                                <div class="top side"></div>
+                                <div class="bottom side"></div>
+                                <div class="front side"></div>
+                            </div>
+                        </li>
+                        <br>
+                        <li>
+                            <p> Elements' customization </p>
+                            <br>
+                            <div class="row justify-content-around">
+                                <button class="col-2 btn btn-outline-success text-center" @click="increase">Lorem Ipsum</button>
+                                <button class="col-2 btn btn-outline-primary text-center" @click="cnt_print">{{count}}</button>
+                                <button class="col-2 btn btn-outline-danger text-center" @click="decrease">Lorem Ipsum</button>
+                            </div>
+                        </li>
+                    </ol>
+                    <br>
+                    <p class="speech2">Without CSS we wouldn't have seen websites with good design. For instance, that's how this webpage looks <a href="css_2.html" class="par-link">without implementing CSS.</a></p>
+                </div>
+                <div v-if="id == 5">
+                    <h4 class="par-header"><strong>JS</strong></h4>
+                    <p class="speech2">JavaScript is the programming language of the Web. Nowadays this language prevails at the majority of web pages, apps and also is implemented at all modern web browsers. Besides web development, over the last decade, JS is also used in software development . For instance, more and more server developers tend to utilize and launch servers on Node.js, the open-source server environment based on JavaScript. Though, why do web developers prefer Javascript over other programming languages? There are several reasons of this phenomenon such as:</p>
+                    <ul>
+                        <li><p>To begin with, JavaScript was invented in 1995 by Brendan Eich. Therefore, It is a relatively fresh programming language, compared to such modern programming languages, such as Pascal (1970), C (1973), C++ (1983) and others.</p></li>
+                        <li><p>Moreover, JavaScript is the dynamic typed language. In other words, it has following advantages: a) an user should not explicitly declare data type of a variable; b) a variable can change its datatype throughout a program; c) dynamically typed languages are better interpreted than statically typed ones; d) it is more comfortable to read a code.</p></li>
+                        <li><p>In addition, this programming language is both suited for both major programming patterns: functional and object-oriented.</p></li>
+                        <li><p>Finally, it has special syntax implemented to work with web browsers.</p></li>
+                    </ul>
+                    <br>
+                    <div class="row justify-content-around">
+                        <img class="col-4" src="img/founder.jpg">
+                        <img class="col-4" src="img/js-code.png">
+                    </div>
+                    <div class="row justify-content-around">
+                        <p class="col-4"><i class="fig-capture">Brendan Eich, the founder of JS</i></p>
+                        <p class="col-4"><i class="fig-capture">"Hello, world!" code written on JS</i></p>
+                    </div>
+                    <br>
+                    <p>We have prepared some samples of JS-based small web applications. Here below the list of them: </p>
+                    <ul>
+                        <li><a class="par-link" href="https://my-calc-xi.vercel.app/"><p>Calculation app</p></a></li>
+                        <li><a class="par-link" href="https://nfactorial-0614-react-states.vercel.app/"><p>Todo list</p></a></li>
+                    </ul>
+                </div>
+                <div v-if="id == 6">
+                    <h4 class="par-header"><strong>URL</strong></h4>
+                    <p class="speech2">URL (Uniform Resource Locator) is nothing more than the address of a given unique resource on the Web. Tim Berners-Lee and his Internet Engineering Task Force working group developed the first URL in 1994. In theory, each valid URL points to a unique resource. Such resources can be an HTML page, a CSS document, an image, etc. In practice, there are some exceptions, the most common being a URL pointing to a resource that no longer exists or that has moved. As the resource represented by the URL and the URL itself are handled by the Web server, it is up to the owner of the web server to carefully manage that resource and its associated URL. A standard URL includes the following elements: Protocol used to access the resource, Location of the related server, Location of the resource in a directory structure.</p>
+                    <br>
+                    <div class="row justify-content-around">
+                        <img class="col-6" src="img/url.webp">
+                    </div>
+                    <div class="row justify-content-around">
+                        <p class="col-6"><i class="fig-capture">Structure of URL</i></p>
+                    </div>
+                </div>
+                <div v-if="id == 7">
+                    <h4 class="par-header"><strong>DNS</strong></h4>
+                    <p class="speech2">The Domain Name System (DNS) is the Internet's system for mapping alphabetic names to numeric Internet Protocol (IP) addresses like a phone book that maps a person's name to a phone number. For example, when a Web address (URL) is typed into a browser, a DNS query is made to learn an IP address of a Web server associated with that name. The DNS system is an open worldwide network of database name servers that include 13 authoritative name servers that serve the DNS root zone level, known as "root servers''. A root server (also called a DNS root name server) receives a DNS query that includes a domain name, and responds by directing that request to a top-level domain (TLD) nameserver, based on the TLD of that domain such as .com, .net, and .org. It directly responds to requests for DNS records in the root zone by returning an appropriate list of the authoritative TLD name servers for the appropriate TLD that can resolve the initial DNS lookup request for an IP address of that domain name.</p>
+                    <br>
+                    <div class="row justify-content-around">
+                        <img class="col-6" src="img/dns.png">
+                    </div>
+                    <div class="row justify-content-around">
+                        <p class="col-6"><i class="fig-capture">Algorithm of DNS</i></p>
+                    </div>
+                </div>
+                <div v-if="id == 8">
+                    <h4 class="par-header"><strong>HTTP</strong></h4>
+                    <p class="speech2">HTTP (HyperText Transfer Protocol) request is the way internet communications platforms such as web browsers ask for the information they need to load a website. Each HTTP request made across the Internet carries with it a series of encoded data that carries different types of information. A typical HTTP request contains:</p>
+                    <ul>
+                        <li><p>HTTP version type;</p></li>
+                        <li><p>URL;</p></li>
+                        <li><p>HTTP method;</p></li>
+                        <li><p>HTTP request headers</p></li>
+                        <li><p>Optional HTTP body</p></li>
+                    </ul>
+                    <p class="speech2">As a request-response protocol, HTTP gives users a way to interact with web resources such as HTML files by transmitting hypertext messages between clients and servers. HTTP clients generally use Transmission Control Protocol (TCP) connections to communicate with servers.</p>
+                    <p class="speech2">S on the HTTPS protocol stands for "Secure," which means your browser and the website you are connected to will encrypt your communication. No 3rd party can track your data without permission, thanks to the Secure characteristic. Therefore, Google strictly recommends using HTTPS protocol while developing a website URL.</p>
+                    <br>
+                    <div class="row justify-content-around">
+                        <img class="col-4" src="img/http.png">
+                        <img class="col-4" src="img/https.png">
+                    </div>
+                    <div class="row justify-content-around">
+                        <p class="col-4"><i class="fig-capture">HTTP protocol</i></p>
+                        <p class="col-4"><i class="fig-capture">HTTPS protocol</i></p>
+                    </div>
+                    <br>
+                </div>
+                <div v-if="id == 9">
+                    <h4 class="par-header"><strong>TLS</strong></h4>
+                    <p class="speech2">Transport Layer Security (TLS) is a protocol that can be used with other protocols like UDP to provide security between applications communicating over an IP network. TLS uses encryption to ensure privacy, so that other parties can’t eavesdrop or tamper with the messages being sent. Using TLS, a secure connection is established by authenticating the client and server, or User Agent Client and User Agent Server, and then encrypting the connection between them. Transport Layer Security is a successor to Secure Sockets Layer (SSL), which was developed by Netscape. Even though it is based on SSL 3.0,TLS is a standard that has been defined in RFC 2246, and is designed to be its replacement. In this standard, TLS is designed as a multilayer protocol that consists of TLS Handshake Protocol and TLS Record Protocol.</p>
+                    <br>
+                    <div class="row justify-content-around">
+                        <img class="col-6" src="img/tls.png">
+                    </div>
+                    <div class="row justify-content-around">
+                        <p class="col-6"><i class="fig-capture">TLS algorithm</i></p>
+                    </div>
+                </div>
+                <div v-if="id == 10">
+                    <h4 class="par-header"><strong>Modern usage</strong></h4>
+                    <p class="speech2">If we are going to discuss the vitality and usage of the Web, we will find out that we cannot imagine our lives without the World Wide Web because it sufficiently simplifies all processes occurring in current society. These days the Web covers the next spheres of humanity’s life:</p>
+                    <ul>
+                        <li><p>Information Technologies;</p></li>
+                        <li><p>Science;</p></li>
+                        <li><p>Education;</p></li>
+                        <li><p>Services to civilians;</p></li>
+                        <li><p>Business processes;</p></li>
+                        <li><p>Personal leisure;</p></li>
+                        <li><p>Communication.</p></li>
+                    </ul>
+                    <br>
+                    <div class="row justify-content-around">
+                        <img class="col-3" src="img/it.jpg">
+                        <img class="col-3" src="img/science.webp">
+                        <img class="col-3" src="img/education.png">
+                    </div>
+                    <br>
+                    <div class="row justify-content-around">
+                        <p class="col-3 text-center"><i>IT</i></p>
+                        <p class="col-3 text-center"><i>Science</i></p>
+                        <p class="col-3 text-center"><i>Education</i></p>
+                    </div>
+                    <br>
+                </div>
+                <div v-if="id == 11">
+                    <h4 class="par-header"><strong>Credits</strong></h4>
+                    <p class="speech2">This project was made by us, the research group ABAA.</p>
+                    <br>
+                    <div class="row justify-content-center">
+                        <img class="col-4 credits-img" src="img/ABAA.png">
+                    </div>
+                    <div class="row justify-content-center">
+                        <p class="col-4"><i class="fig-capture">ABAA, the research group</i></p>
+                    </div>
+                    <h4 class="speech2"><strong>Team members:</strong></h4>
+                    <dl>
+                        <dt><p>Mussabayev Azimzhan</p></dt>
+                        <dd><p>- Collecting and an analysis of information about the definition of the Web and its features;</p></dd>
+                        <dd><p>- Creating a website.</p></dd>
+                        <dt><p>Myrzakhanov Alisher</p></dt>
+                        <dd><p>- Collecting and an analysis of information about the history of the World Wide Web;</p></dd>
+                        <dd><p>- Collecting and an analysis of information about web protocols.</p></dd>
+                        <dt><p>Zhonkebayev Bauyrzhan</p></dt>
+                        <dd><p>- Creating a web application by utilizing described web technologies;</p></dd>
+                        <dt><p>- Creating web applications.</p></dt>
+                        <dt><p>Oryntayev Alizhan</p></dt>
+                        <dd><p>- Collecting and an analysis of information about modern usage of the Web.</p></dd>
+                    </dl>
+                </div>
+                <div v-if="id == 12">
+                    <h4 class="par-header"><strong>References:</strong></h4>
+                    <br>
+                    <ol>
+                        <li><p>Berners-Lee, T. (1989). Information Management: A Proposal. CERN.</p></li>
+                        <li><p>Flanagan, D. (2020). Javascript: The Definitive Guide, 7th edition. O'Reilly Media, Inc.</p></li>
+                        <li><p>Gillies, J. M. & Cailliau, R. (2000). How the Web was born: The story of The World Wide Web. Oxford University Press.</p></li>
+                        <li><p>Jacksi, K. & Abass, S. M. (2019). Development History Of The World Wide Web. International Journal Of Scientific & Technology Research. 8(9), 75-76.</p></li>
+                        <li><p>Nurpeisova T. B. & Kaidash I. N. (2017). Information and communication technologies. Bastau.</p></li>
+                        <li><p>Powell, T. A. (2010). HTML & CSS: The Complete Reference, Fifth Edition. McGraw-Hill Companies.</p> </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
